@@ -1,5 +1,5 @@
 {
-  "name": "v1",
+  "name": "yelpcamp",
   "version": "1.0.0",
   "description": "YelpCamp v1",
   "main": "app.js",
@@ -12,13 +12,18 @@
   "dependencies": {
     "body-parser": "^1.19.0",
     "connect-flash": "^0.1.1",
-    "ejs": "^2.6.1",
-    "express": "^4.17.0",
-    "express-session": "^1.16.1",
+    "dotenv": "^8.2.0",
+    "ejs": "^2.7.4",
+    "express": "^4.17.1",
+    "express-session": "^1.17.0",
     "method-override": "^3.0.0",
-    "mongoose": "^5.5.11",
-    "passport": "^0.4.0",
+    "mongoose": "^5.9.2",
+    "passport": "^0.4.1",
     "passport-local": "^1.0.0",
     "passport-local-mongoose": "^5.0.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://git.heroku.com/secret-bayou-18204.git"
   }
 }

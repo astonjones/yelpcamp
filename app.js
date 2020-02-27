@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 var express           = require("express"),
     app               = express(),
     bodyParser        = require("body-parser"),
@@ -18,7 +20,7 @@ var commentRoutes    = require("./routes/comments"),
 
 //package configurations
 // mongoose.connect("mongodb://localhost/yelp_camp_v11", { useNewUrlParser: true});
-mongoose.connect("mongodb+srv://astonjones:Password0123@cluster0-ez0o2.mongodb.net/test?retryWrites=true&w=majority", { useNewUrlParser: true});
+mongoose.connect(`mongodb+srv://astonjones:loKW55h2DArpnAkv@gradesapp-ez0o2.gcp.mongodb.net/test?retryWrites=true&w=majority`, { useNewUrlParser: true, useUnifiedTopology: true});
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
@@ -50,6 +52,6 @@ app.use("/", indexRoutes);
 app.use("/campgrounds", campgroundRoutes);
 app.use("/campgrounds/:id/comments", commentRoutes);
 
-app.listen(process.env.PORT, process.env.IP, function(){
+app.listen(process.env.PORT, () => {
    console.log("The YelpCamp Server Has Started!");
 });
