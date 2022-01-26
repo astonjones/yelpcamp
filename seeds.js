@@ -1,3 +1,5 @@
+/* This file is to seed the database with some data for testing purposes */
+
 var mongoose = require("mongoose");
 var Campground = require("./models/campground");
 var Comment = require("./models/comment");
@@ -28,35 +30,33 @@ function seedDB(){
             console.log(err)
         } else {
             console.log("removed campgrounds!");
-            //added a few campgrounds
-            // data.forEach(function(seed){
-            //     Campground.create(seed, function(err, campground){
-            //         if(err){
-            //             console.log(err);
-            //         } else {
-            //             console.log("Added a campground!");
-            //             //create a comment
-            //             Comment.create(
-            //                 {
-            //                   text: "THis place is great but has no wifi",
-            //                   author: "Homer"
-            //                 }, function(err, comment){
-            //                   if(err){
-            //                       console.log(err);
-            //                   } else {
-            //                       campground.comments.push(comment);
-            //                       campground.save();
-            //                       console.log("Created new comment");
-            //                   }
-            //               }
-            //             );
-            //         }
-            //     });
-            // });
+            // add a few campgrounds
+            data.forEach(function(seed){
+                Campground.create(seed, function(err, campground){
+                    if(err){
+                        console.log(err);
+                    } else {
+                        console.log("Added a campground!");
+                        //create a comment
+                        Comment.create(
+                            {
+                              text: "THis place is great but has no wifi",
+                              author: "Homer"
+                            }, function(err, comment){
+                              if(err){
+                                  console.log(err);
+                              } else {
+                                  campground.comments.push(comment);
+                                  campground.save();
+                                  console.log("Created new comment");
+                              }
+                          }
+                        );
+                    }
+                });
+            });
         }
     });
-    //add a few campground
-    //Add a few comments
 }
 
 module.exports = seedDB;

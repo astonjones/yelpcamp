@@ -5,7 +5,6 @@ var middleware = require("../middleware");
 
 //INDEX - show all campgrounds
 router.get("/", function(req, res){
-    // Get all campgrounds from DB
     Campground.find({}, function(err, allCampgrounds){
        if(err){
            console.log(err);
@@ -33,7 +32,6 @@ router.post("/", middleware.isLoggedIn, function(req, res){
             console.log(err);
         } else {
             //redirect back to campgrounds page
-            console.log(newlyCreated);
             res.redirect("/campgrounds");
         }
     });
@@ -51,8 +49,6 @@ router.get("/:id", function(req, res){
         if(err){
             console.log(err);
         } else {
-            console.log(foundCampground);
-            //render show template with that campground
             res.render("campgrounds/show", {campground: foundCampground});
         }
     });
@@ -68,7 +64,6 @@ router.get("/:id/edit", middleware.checkCampgroundOwnership, function(req, res){
 //UPDATE CAMPGROUND ROUTE
 router.put("/:id", middleware.checkCampgroundOwnership, function(req, res){
    //find and update the correct campground
-   //redirect somewhere(show page)
    Campground.findByIdAndUpdate(req.params.id, req.body.campground, function(err, updatedCampground){
         if(err){
             res.redirect("/campgrounds");

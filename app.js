@@ -12,15 +12,15 @@ var express           = require("express"),
     Comment           = require("./models/comment"),
     User              = require("./models/user"),
     seedDB            = require("./seeds");
+    MONGO_URI         = Process.env.MONGO_URI;
     
-//requring routes from other files
 var commentRoutes    = require("./routes/comments"),
     campgroundRoutes = require("./routes/campground"),
     indexRoutes      = require("./routes/index")
 
 //package configurations
 // mongoose.connect("mongodb://localhost/yelp_camp_v11", { useNewUrlParser: true});
-mongoose.connect(`mongodb+srv://astonjones:loKW55h2DArpnAkv@gradesapp-ez0o2.gcp.mongodb.net/test?retryWrites=true&w=majority`, { useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.connect(MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true});
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
